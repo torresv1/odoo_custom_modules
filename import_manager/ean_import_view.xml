@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+
+
+    <!-- Directory Path -->
+
+    <record id="imp_category_form" model="ir.ui.view">
+            <field name="name">imp.category.form</field>
+            <field name="model">imp.category</field>
+            <field name="arch" type="xml">
+
+                <form string="Import Directory Path Configure">
+                  <sheet>
+                    <group col="2">
+					    <field name="name" />
+					    <field name="path" />
+                        <button name="import_category" type="object" string="Import Category" icon="gtk-network"/>
+                        <button name="search_parent" type="object" string="Search Parent" icon="terp-stage"/>
+                    </group>
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+
+        <record id="imp_category_tree" model="ir.ui.view">
+            <field name="name">imp.category.tree</field>
+            <field name="model">imp.category</field>
+            <field name="arch" type="xml">
+                 <tree string="Import Directory Path Configure">
+                     <field name="name" />
+                     <field name="path" />
+                 </tree>
+            </field>
+        </record>
+
+
+
+    <record id="menu_import_category_form" model="ir.actions.act_window">
+            <field name="name">Import Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imp.category</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure import directory.
+              </p><p>
+               Ean Import Category Easy
+              </p>
+            </field>
+    </record>
+
+
+     <menuitem id="menu_extend_import" name="Extend Import" parent="base.menu_administration" sequence="10" groups="base.group_no_one"/>
+
+        	<menuitem id="menu_import_category"
+              name="Import Category"
+              parent="menu_extend_import"
+              action="menu_import_category_form"
+		 />
+
+
+    <!-- Category -->
+
+    <record id="imp_lafa_category_form" model="ir.ui.view">
+            <field name="name">imp.lafa.category.form</field>
+            <field name="model">imp.lafa.category</field>
+            <field name="arch" type="xml">
+
+                <form string="Import lafa Directory Path Configure">
+                  <sheet>
+                    <group col="2">
+					    <field name="name" />
+					    <field name="path" />
+                        <button name="import_category" type="object" string="Import Category" icon="gtk-network"/>
+                    </group>
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+
+        <record id="imp_lafa_category_tree" model="ir.ui.view">
+            <field name="name">imp.lafa.category.tree</field>
+            <field name="model">imp.lafa.category</field>
+            <field name="arch" type="xml">
+                 <tree string="Import Directory Path Configure">
+                     <field name="name" />
+                     <field name="path" />
+                 </tree>
+            </field>
+        </record>
+
+
+
+
+    <record id="menu_lafa_category_form" model="ir.actions.act_window">
+            <field name="name">Import Lafa Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imp.lafa.category</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure import directory.
+              </p><p>
+               Lafamosa Import Category
+              </p>
+            </field>
+    </record>
+
+
+
+
+        	<menuitem id="menu_lafa_category"
+              name="Import lafa. Category"
+              parent="menu_extend_import"
+              action="menu_lafa_category_form"
+		 />
+
+    <!-- update Category for product from csv -->
+
+    <record id="upd_lafa_product_form" model="ir.ui.view">
+            <field name="name">upd.lafa.product.form</field>
+            <field name="model">upd.lafa.product</field>
+            <field name="arch" type="xml">
+
+                <form string="Update lafa Directory Path Configure">
+                  <sheet>
+                    <group col="2">
+					    <field name="name" />
+					    <field name="path" />
+                        <button name="update_category" type="object" string="Update Category" icon="gtk-network"/>
+                    </group>
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+
+        <record id="upd_lafa_product_tree" model="ir.ui.view">
+            <field name="name">upd.lafa.product.tree</field>
+            <field name="model">upd.lafa.product</field>
+            <field name="arch" type="xml">
+                 <tree string="Import Directory Path Configure">
+                     <field name="name" />
+                     <field name="path" />
+                 </tree>
+            </field>
+        </record>
+
+
+
+
+    <record id="menu_upd_lafa_product_form" model="ir.actions.act_window">
+            <field name="name">Update Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">upd.lafa.product</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure import directory.
+              </p><p>
+               Lafamosa Update Category for Product
+              </p>
+            </field>
+    </record>
+
+
+
+
+        	<menuitem id="menu_upd_lafa_product"
+              name="Update lafa. cat. Product"
+              parent="menu_extend_import"
+              action="menu_upd_lafa_product_form"
+		 />
+
+
+        <!-- update Product for product from csv -->
+
+    <record id="imp_lafa_product_form" model="ir.ui.view">
+            <field name="name">imp.lafa.product.form</field>
+            <field name="model">imp.lafa.product</field>
+            <field name="arch" type="xml">
+
+                <form string="Update lafa Directory Path Configure">
+                  <sheet>
+                    <group col="2">
+					    <field name="name" />
+					    <field name="path" />
+                        <button name="import_product" type="object" string="Import Product" icon="gtk-network"/>
+                    </group>
+                  </sheet>
+                </form>
+
+
+
+            </field>
+    </record>
+
+
+        <record id="imp_lafa_product_tree" model="ir.ui.view">
+            <field name="name">imp.lafa.product.tree</field>
+            <field name="model">imp.lafa.product</field>
+            <field name="arch" type="xml">
+                 <tree string="Import Directory Path Configure">
+                     <field name="name" />
+                     <field name="path" />
+                 </tree>
+            </field>
+        </record>
+
+
+
+
+    <record id="menu_imp_lafa_product_form" model="ir.actions.act_window">
+            <field name="name">Import Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imp.lafa.product</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to start configure import directory.
+              </p><p>
+               Lafamosa Import Product for Product
+              </p>
+            </field>
+    </record>
+
+
+
+
+        	<menuitem id="menu_imp_lafa_product"
+              name="Import lafa. Product"
+              parent="menu_extend_import"
+              action="menu_imp_lafa_product_form"
+		 />
+
+
+
+
+
+
+
+</data>
+</openerp>
