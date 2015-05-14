@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+ <!-- Advance Discount -->
+
+        <record id="pos_adv_discount_tree_view" model="ir.ui.view">
+            <field name="name">pos.adv_discount.tree</field>
+            <field name="model">pos.adv_discount</field>
+            <field name="arch" type="xml">
+                <tree string="Advance Discount">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pos_adv_discount_form_view" model="ir.ui.view">
+            <field name="name">pos.adv_discount.form</field>
+            <field name="model">pos.adv_discount</field>
+            <field name="arch" type="xml">
+                <form string="Advance Discount">
+                    <sheet>
+
+                         <group colspan="4">
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="start_date" on_change="on_change_date(start_date,end_date)"/>
+                            <field name="end_date" placeholder="no end day" on_change="on_change_date(start_date,end_date)"/>
+
+
+                        </group>
+                        <group>
+
+                             <field name="journal_id"/>
+                            <field name="active"/>
+                        </group>
+
+                        </group>
+
+                        <notebook>
+
+            <!-- Customer Tab -->
+                            <page string="Customer">
+                                    <group>
+                                        <field name="cfilter" string="Customer of" widget='radio' />
+                                    </group>
+                               <div attrs="{'invisible': [('cfilter','in',('all',False, []))]}" >
+
+                                <!--<field name="partner" widget="x2many_counter" string="Partner"/> -->
+                                <separator string="Select Customers"/>
+                                <field name="partner">
+                                    <form string="Customer Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                    <tree string="Customer Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                                </div>
+                            </page>
+
+
+            <!-- Customer Tab -->
+                            <page string="Configuration">
+
+
+                                <group>
+
+                                        <field name="discount_type" string="Select Discount" widget='radio' on_change="on_change_discount_type(discount_type)"/>
+
+                                </group>
+
+
+                  <div attrs="{'invisible': [('discount_type','not in',('simple_dsc'))]}">
+
+                                <group>
+
+                                        <field name="pfilter" string="Select type" widget='radio' />
+                                        <separator/>
+                                        <separator/>
+
+                                        <field name="value_method" widget='radio' on_change="on_change_value_method(value_method)" help="\ Percent 0ff - ok  \ Amount 0ff - If you require this feature please contact your system administrator '"/>
+                                        <field name="amount" on_change="on_change_amount(amount)" attrs="{'readonly': [('value_method', '=', 'amount')]}" />
+
+                                </group>
+
+
+
+                                <div attrs="{'invisible': [('pfilter','in',('all','category','special',False, []))]}">
+
+                                <separator string="Select Products"/>
+                                <field name="product"  domain="['|',['type','=','sale'],['available_in_pos','&lt;&gt;',False] ]" >
+                                    <tree string="Product Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                    <form string="Product Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                </field>
+
+                                 </div>
+
+                                <div  attrs="{'invisible': [('pfilter','in',('all','product','special', False, []))]}">
+                                <separator string="Select Categories"/>
+                                <field name="pcategory" >
+                                    <tree string="Product Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                    <form string="Product Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                </field>
+
+                                </div>
+
+
+                    </div>
+
+
+
+
+                    <div attrs="{'invisible': [('discount_type','not in',('BuyXforpriceY'))]}">
+
+                        <separator string="Select Options"/>
+
+                        <group>
+
+
+                            <field name="product_1" string="Product"  domain="['|',['type','=','sale'],['available_in_pos','&lt;&gt;',False] ]"/>
+
+                            <field name="pro_val_1" string="Buy amount"  />
+                            <field name="pro_val_2" string="Paid amount"  />
+
+
+                        </group>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+ <!--
+                                <div  attrs="{'invisible': [('pfilter','in',('all','product','category', False, []))]}">
+                                <separator string="Special Rule"/>
+
+                                <group>
+                                    <field name="special_rule" string="Type of Rule" widget='radio' />
+                                </group>
+
+                                <group col="4">
+
+                                    <field name="product_1" string="Product for buy" />
+                                    <field name="pro_val_1" string="Amount"/>
+                                    <field name="product_2" string="Product for get"/>
+                                    <field name="pro_val_2" string="Amount/percent"/>
+
+                                </group>
+
+
+
+                                </div>
+
+
+
+                        <group>
+
+
+                            <field name="date"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <field name="product_id" domain="[('type','=','product')]" attrs="{'invisible': [('filter', 'not in', ('product', 'product_owner'))]}"/>
+                            <field name="lot_id" attrs="{'invisible': [('filter', '!=', 'lot')]}" groups="stock.group_production_lot" />
+                            <field name="partner_id" attrs="{'invisible': [('filter', 'not in', ('owner', 'product_owner'))]}" groups="stock.group_tracking_owner"/>
+                            <field name="package_id" attrs="{'invisible': [('filter', '!=', 'pack')]}" groups="stock.group_tracking_lot"/>
+
+                        </group>
+
+
+                            </page>
+
+                            <page string="Type">
+
+-->
+
+                            </page>
+
+                        </notebook>
+
+
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <record id="pos_adv_discount_form_action" model="ir.actions.act_window">
+            <field name="name">POS Advance discounts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.adv_discount</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="pos_adv_discount_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new POS Advance discounts.
+              </p><p>
+                You must define a POS Advance discounts.
+              </p>
+            </field>
+        </record>
+
+
+        <menuitem action="pos_adv_discount_form_action"
+            name="Discounts"
+            id="menu_pos_adv_discount_form_action"
+            parent="point_of_sale.menu_point_config_product"
+            groups="point_of_sale.group_pos_manager"
+            sequence="25"/>
+
+
+
+
+
+            <!-- view specific to product.template
+        <record id="product_template_pos_adv_discount_only_form_view" model="ir.ui.view">
+            <field name="name">product.template.pos.adv_discount.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                  <xpath expr="/form/sheet/notebook" position="inside" version="7.0">
+                <page string="Discount" >
+
+                    <group colspan="2" col="2">
+                        <field name="pos_ad_dic" nolabel="1"  widget="one2many_list" >
+                             <tree string="Discount List">
+                                 <field name="name"/>
+                                 <field name="code"/>
+                             </tree>
+                         </field>
+                    </group>
+
+
+                </page>
+            </xpath>
+
+
+            </field>
+        </record>
+
+-->
+
+         <!-- product product -->
+
+        <record id="product_pos_adv_discount_normal_form_view" model="ir.ui.view">
+            <field name="name">product.product.pos.adv_discount.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+
+            <field name="arch" type="xml">
+                 <xpath expr="/form/sheet/notebook" position="inside" version="7.0">
+                <page string="Discount" >
+
+                    <group colspan="2" col="2">
+                        <field name="pos_ad_dic" nolabel="1"  widget="one2many_list" >
+                             <tree string="Discount List">
+                                 <field name="name"/>
+                                 <field name="code"/>
+                             </tree>
+                         </field>
+                    </group>
+
+
+                </page>
+            </xpath>
+
+
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </data>
+</openerp>

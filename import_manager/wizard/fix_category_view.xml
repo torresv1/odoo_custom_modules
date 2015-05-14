@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--   Product Fix POS categories -->
+
+        <record id="view_fix_category" model="ir.ui.view">
+            <field name="name">Fix Categoty</field>
+            <field name="model">fix.category</field>
+            <field name="arch" type="xml">
+                <form string="List">
+                    <group string="POS Categories">
+                        <field colspan="2" name="first_pos_cat_id"/>
+                        <field colspan="2" name="second_pos_cat_id"/>
+                    </group>
+                    <footer>
+                        <button name="check_category" string="Transfer"  type="object" class="oe_highlight"  />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--   Pop up form -->
+
+        <act_window id="action_fix_category"
+                    name="Fix Category"
+                    res_model="fix.category"
+                    groups="base.group_no_one"
+                    view_mode="form" target="new" view_type="form" />
+
+        <!--   Menu for form -->
+
+        <menuitem id="menu_fix_pos_categotry"
+              name="Fix Pos Category"
+              parent="menu_extend_import"
+              action="action_fix_category"
+		 />
+
+
+    </data>
+</openerp>
