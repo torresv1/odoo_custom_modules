@@ -25,3 +25,8 @@ come with the standard code:
 13,8,pos_decimal_point,2,Automatically put a decimal point after 2 digits have been entered in the payment method,5/11/2015,Viktor Vorobjo,La Famosa,
 14,8,pos_report_session,1,Design the 80m session report correcting the Title size,5/14/2015,Viktor Vorobjo,La Famosa,
 15,8,qweb_usertime,1,"Fix session to appear in the user time, not in the generic greenwhich time",5/14/2015,Viktor Vorobjo,La Famosa,
+16,8,BackUP Daily,1,Automatic backup,5/19/2015,OCA,La Famosa,
+17,8,BackUP Daily Housekeeping,1,Automatic backup,5/20/2015,OCA,La Famosa,
+18,8,BackUP Yadisk Daily,1,Automatic backup Yandex,5/21/2015,OCA,La Famosa,
+19,8,BackUP Yadisk Daily Housekeeping,1,Automatic backup Yandex,5/22/2015,OCA,La Famosa,
+20,8,scheduler_error_mailer,1,Communicate errors on automatic actions,5/23/2015,OCA,La Famosa,
